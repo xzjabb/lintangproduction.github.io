@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lintang Production</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="path/to/new-icon.png" type="image/png">
+<link rel="shortcut icon" href="path/to/new-icon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="path/to/new-icon.png">
+
+
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        .header {
+            background: url('bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 200px 20px; /* Meningkatkan padding untuk memperpanjang area header */
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .header::after {
+            content: '';
+            background: url('bg.jpg') no-repeat center center/cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.; /* Mengatur kecerahan gambar menjadi lebih samar */
+        }
+        .header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #8B4513; /* Mengubah warna tulisan menjadi coklat */
+            animation: slideInDown 1s ease-in-out;
+        }
+        .header p {
+            font-size: 1.5em;
+            margin: 10px 0 20px;
+            animation: slideInDown 1.5s ease-in-out;
+        }
+        .header button {
+            background-color: #d4a017;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            animation: slideInDown 2s ease-in-out;
+        }
+        .wave {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 75%);
+            position: relative;
+            animation: wave 2s linear infinite;
+        }
+        @keyframes wave {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            position: relative;
+            z-index: 2;
+        }
+        .feature {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .feature i {
+            font-size: 3em;
+            color: #d4a017;
+        }
+        .feature h3 {
+            font-size: 1.8em;
+            margin: 15px 0;
+        }
+        .feature p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        .gallery {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .gallery h2 {
+            color: #d4a017;
+            font-size: 2em;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .gallery p {
+            font-size: 1.2em;
+            color: #666;
+            margin: 20px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .gallery-image {
+            width: 30%;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .gallery-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .services {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .services h2 {
+            color: #d4a017;
+            font-size: 2em;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .services p {
+            font-size: 1.2em;
+            color: #666;
+            margin: 20px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .service-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .service-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .service-card h3 {
+            font-size: 1.8em;
+            margin: 15px 0;
+        }
+        .service-card p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        .contact {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .contact h2 {
+            color: #d4a017;
+            font-size: 2em;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .contact p {
+            font-size: 1.2em;
+            color: #666;
+            margin: 20px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .contact a {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px;
+            font-size: 1.2em;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .contact a.instagram {
+            background-color: #E4405F;
+        }
+        .contact iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .footer-top {
+            background-color: #444;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .footer-top p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .footer-top .social-icons {
+            margin-top: 10px;
+        }
+        .footer-top .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 150px 20px; /* Sesuaikan padding untuk perangkat kecil */
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .header p {
+                font-size: 1.2em;
+            }
+            .header button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .features, .gallery-images, .service-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature, .gallery-image, .service-card {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>LINTANG PRODUCTION</h1>
+        <p>PUSAT SERVICE, CUSTOM, JUAL BELI, & BUAT BARU SOFA</p>
+        <button onclick="window.location.href='#contact'">HUBUNGI KAMI</button>
+    </header>
+    <div class="wave"></div> <!-- Animasi gelombang di bawah header -->
+    <section class="features">
+        <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <h3>Hasil Berkualitas Tinggi</h3>
+            <p>Kami mengutamakan kualitas dalam setiap detail pengerjaan kami. Mulai dari pemilihan bahan hingga proses produksi dikerjakan oleh ahlinya.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-couch"></i>
+            <h3>Banyak Pilihan Kain & Kulit</h3>
+            <p>Kami menawarkan beragam pilihan bahan, termasuk kain dan kulit asli, semi kulit, serta berbagai material berkualitas lainnya.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-handshake"></i>
+            <h3>Gratis Survey & Konsultasi</h3>
+            <p>Dapatkan Gratis Survey dan Konsultasi untuk merancang sofa impian Anda dengan para ahli kami di Padasuka Interior.</p>
+        </div>
+    </section>
+    <section class="gallery">
+        <h2>GALLERY HASIL PENGERJAAN SERVICE SOFA</h2>
+        <p>Berikut adalah beberapa hasil pengerjaan service sofa yang telah kami selesaikan.</p>
+        <div class="gallery-images">
+            <div class="gallery-image">
+                <img alt="A beautifully restored leather sofa." height="300" src="gb1.jpg" width="400"/>
+            </div>
+            <div class="gallery-image">
+                <img alt="A modern sofa with new upholstery." height="300" src="gb8.jpg" width="400"/>
+            </div>
+            <div class="gallery-image">
+                <img alt="A classic sofa with refurbished cushions." height="300" src="gb4.jpg" width="400"/>
+            </div>
+            <div class="gallery-image">
+                <img alt="A sectional sofa with new fabric." height="300" src="gb5.jpg" width="400"/>
+            </div>
+            <div class="gallery-image">
+                <img alt="A vintage sofa with restored leather." height="300" src="gb6.jpg" width="400"/>
+            </div>
+            <div class="gallery-image">
+                <img alt="A contemporary sofa with new padding." height="300" src="gb7.jpg" width="400"/>
+            </div>
+        </div>
+    </section>
+    <section class="services">
+        <h2>LAYANAN UNGGULAN</h2>
+        <p>Melayani Semua Kebutuhan Anda</p>
+        <p>Dengan pengalaman dari seorang ahli dalam layanan perbaikan dan pembuatan sofa baru, kami di Padasuka Interior siap memberikan pelayanan terbaik untuk memenuhi kebutuhan furnitur Anda.</p>
+        <div class="service-cards">
+            <div class="service-card">
+                <img alt="Service Sofa - A well-maintained sofa in a living room." height="300" src="https://storage.googleapis.com/a1aa/image/U_4Ld-mlhn-mfEpUigSYpZzU0m9FtK-8IlndL0RhaQg.jpg" width="400"/>
+                <h3>Service Sofa</h3>
+                <p>Melayani service & pembuatan sofa dengan berbagai bahan seperti kulit asli, semi kulit, dan lainnya.</p>
+            </div>
+            <div class="service-card">
+                <img alt="Custom Sofa - A custom-designed sofa in a modern living room." height="300" src="https://storage.googleapis.com/a1aa/image/stPdSmWHzMlzLTpOwcpObbs0w8WzKtTqeQSK-68GoJ0.jpg" width="400"/>
+                <h3>Custom Sofa</h3>
+                <p>Menyediakan layanan kustom desain sofa, spring bed, dan bantalan untuk mewujudkan kreasi sesuai dengan spesifikasi Anda.</p>
+            </div>
+            <div class="service-card">
+                <img alt="Layanan Luas - A spacious living room with a variety of furniture." height="300" src="https://storage.googleapis.com/a1aa/image/BNhlYkHXIhTNIQjr4nR5EYhfupclkPYosCwlwSpNseg.jpg" width="400"/>
+                <h3>Layanan Luas</h3>
+                <p>Layanan kami mencakup seluruh area Jabodetabek khususnya wilayah Pamulang, Ciputat, BSD, dan Bintaro. Dapatkan layanan gratis survey dan konsultasi.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h2>HUBUNGI KAMI</h2>
+        <p>Untuk informasi lebih lanjut, hubungi kami melalui WhatsApp atau kunjungi lokasi kami di Google Maps.</p>
+        <a href="https://wa.me/+6287713686970" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Hubungi Kami di WhatsApp
+        </a>
+        <a class="instagram" href="https://www.instagram.com/homeservicesofa.tangsel" target="_blank">
+            <i class="fab fa-instagram"></i>
+            Ikuti Kami di Instagram
+        </a>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5719123659346!2d106.7525739!3d-6.319823599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ef0047b09cb3%3A0x7f5403df748e16ed!2sLintang%20Production%20Service%20Sofa!5e0!3m2!1sid!2sid!4v1737186101146!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    </section>
+    <footer class="footer-top">
+        <p>LINTANG PRODUCTION</p>
+        <p>Alamat: Jl. Legoso Raya, Pisangan, Kec. Ciputat Tim., Kota Tangerang Selatan, Banten 15419, Indonesia</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>    
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </footer>
+    <footer class="footer">
+        <p>© 2024 LINTANG PRODUCTION. All rights reserved.</p>
+    </footer>
+</body>
+</html>
