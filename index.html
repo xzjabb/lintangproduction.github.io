@@ -1,395 +1,593 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Lintang Production</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lintang Production - Spesialis Perbaikan Sofa & Spring Bed</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Lintang Production - Spesialis Home Service Perbaikan Sofa, Kursi & Spring Bed di Tangerang Selatan. Bergaransi 1 Tahun, Gratis Survey!">
+    <meta name="keywords" content="service sofa, perbaikan spring bed, ganti kain sofa, tukang jok jakarta">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#D2B48C'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'fade-in-up': 'fadeInUp 1s ease-in-out',
+                        'slide-down': 'slideDown 0.3s ease-out'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
-    <link rel="icon" href="path/to/new-icon.png" type="image/png">
-<link rel="shortcut icon" href="path/to/new-icon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="path/to/new-icon.png">
-
-
-
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            overflow-x: hidden;
+        /* Tambahan Animasi */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
-        .header {
-            background: url('bg.jpg') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 200px 20px; /* Meningkatkan padding untuk memperpanjang area header */
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 2s ease-in-out;
+        
+        @keyframes shine {
+            from { background-position: 200% 0; }
+            to { background-position: -200% 0; }
         }
-        .header::after {
-            content: '';
-            background: url('bg.jpg') no-repeat center center/cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.; /* Mengatur kecerahan gambar menjadi lebih samar */
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
         }
-        .header h1 {
-            font-size: 3em;
-            margin: 0;
-            color: #8B4513; /* Mengubah warna tulisan menjadi coklat */
-            animation: slideInDown 1s ease-in-out;
+
+        .animate-shine {
+            background: linear-gradient(
+                90deg,
+                transparent 25%,
+                rgba(255,255,255,0.3) 50%,
+                transparent 75%
+            );
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
         }
-        .header p {
-            font-size: 1.5em;
-            margin: 10px 0 20px;
-            animation: slideInDown 1.5s ease-in-out;
+
+        .hover-tilt {
+            transition: transform 0.3s ease;
         }
-        .header button {
-            background-color: #d4a017;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            animation: slideInDown 2s ease-in-out;
+        .hover-tilt:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
         }
-        .wave {
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 75%);
-            position: relative;
-            animation: wave 2s linear infinite;
-        }
-        @keyframes wave {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 100% 0;
-            }
-        }
-        .features {
-            display: flex;
-            justify-content: space-around;
-            padding: 50px 20px;
-            background-color: #f9f9f9;
-            position: relative;
-            z-index: 2;
-        }
-        .feature {
-            background: white;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            animation: fadeInUp 1s ease-in-out;
-        }
-        .feature i {
-            font-size: 3em;
-            color: #d4a017;
-        }
-        .feature h3 {
-            font-size: 1.8em;
-            margin: 15px 0;
-        }
-        .feature p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        .gallery {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .gallery h2 {
-            color: #d4a017;
-            font-size: 2em;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .gallery p {
-            font-size: 1.2em;
-            color: #666;
-            margin: 20px 0;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .gallery-images {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .gallery-image {
-            width: 30%;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-        .gallery-image img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .services {
-            background-color: #f9f9f9;
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .services h2 {
-            color: #d4a017;
-            font-size: 2em;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .services p {
-            font-size: 1.2em;
-            color: #666;
-            margin: 20px 0;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .service-cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .service-card {
-            background: white;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-        .service-card img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .service-card h3 {
-            font-size: 1.8em;
-            margin: 15px 0;
-        }
-        .service-card p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        .contact {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .contact h2 {
-            color: #d4a017;
-            font-size: 2em;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .contact p {
-            font-size: 1.2em;
-            color: #666;
-            margin: 20px 0;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .contact a {
-            display: inline-block;
-            background-color: #25d366;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 10px;
-            font-size: 1.2em;
-            animation: fadeInUp 1s ease-in-out;
-        }
-        .contact a.instagram {
-            background-color: #E4405F;
-        }
-        .contact iframe {
-            width: 100%;
-            height: 400px;
-            border: 0;
-            margin-top: 20px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .footer p {
-            margin: 0;
-            font-size: 1.2em;
-        }
-        .footer-top {
-            background-color: #444;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .footer-top p {
-            margin: 0;
-            font-size: 1.2em;
-        }
-        .footer-top .social-icons {
-            margin-top: 10px;
-        }
-        .footer-top .social-icons a {
-            color: white;
-            margin: 0 10px;
-            font-size: 1.5em;
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            .header {
-                padding: 150px 20px; /* Sesuaikan padding untuk perangkat kecil */
-            }
-            .header h1 {
-                font-size: 2em;
-            }
-            .header p {
-                font-size: 1.2em;
-            }
-            .header button {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-            .features, .gallery-images, .service-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            .feature, .gallery-image, .service-card {
-                width: 90%;
-                margin-bottom: 20px;
-            }
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideInDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+         /* Navbar Scroll Effect */
+    .navbar-scrolled {
+        background: rgba(139, 69, 19, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animasi Link Navbar */
+    .nav-link {
+        position: relative;
+        padding-bottom: 2px;
+        transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #D2B48C;
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
     </style>
 </head>
-<body>
-    <header class="header">
-        <h1>LINTANG PRODUCTION</h1>
-        <p>PUSAT SERVICE, CUSTOM, JUAL BELI, & BUAT BARU SOFA</p>
-        <button onclick="window.location.href='#contact'">HUBUNGI KAMI</button>
+<body class="bg-gray-50">
+  <!-- Navbar Diperbaiki -->
+<nav class="fixed w-full z-50 top-0 bg-transparent text-white transition-all duration-300" id="navbar">
+  <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <a href="#" class="text-2xl font-bold transition-transform duration-300 hover:scale-105">
+              Lintang Production
+          </a>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8 items-center">
+              <a href="#home" class="nav-link hover:text-secondary">Beranda</a>
+              <a href="#services" class="nav-link hover:text-secondary">Layanan</a>
+              <a href="#about" class="nav-link hover:text-secondary">Tentang</a>
+              <a href="#contact" class="nav-link hover:text-secondary">Kontak</a>
+              <a href="https://wa.me/6287713686970" 
+                 class="bg-secondary text-primary px-6 py-2 rounded-full hover:bg-primary hover:text-secondary transition-all">
+                  WhatsApp
+              </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-2xl focus:outline-none" id="menu-btn">
+              <i class="fas fa-bars"></i>
+          </button>
+      </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-primary/95 backdrop-blur-sm" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4">
+          <a href="#home" class="block py-3 nav-link hover:text-secondary">Beranda</a>
+          <a href="#services" class="block py-3 nav-link hover:text-secondary">Layanan</a>
+          <a href="#about" class="block py-3 nav-link hover:text-secondary">Tentang</a>
+          <a href="#contact" class="block py-3 nav-link hover:text-secondary">Kontak</a>
+          <a href="https://wa.me/6287713686970" 
+             class="block py-3 text-center bg-secondary text-primary rounded-full mt-4 hover:bg-primary hover:text-secondary">
+              WhatsApp
+          </a>
+      </div>
+  </div>
+</nav>
+    <!-- Hero Section (Diperbarui) -->
+    <header class="bg-primary text-white py-12 md:py-16 relative overflow-hidden" id="home">
+        <!-- Efek Latar Belakang -->
+        <div class="absolute inset-0 opacity-10 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+        
+        <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 relative">
+            <!-- Teks -->
+            <div class="md:w-1/2 animate-fade-in">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                    Spesialis Perbaikan Sofa, Kursi & Spring Bed
+                </h1>
+                <p class="text-lg mb-8 opacity-90">
+                    Garansi 1 Tahun Pengerjaan • Gratis Survey & Konsultasi
+                </p>
+                <div class="flex gap-4">
+                    <a 
+                        href="#contact"
+                        class="bg-secondary text-primary font-semibold px-6 py-3 rounded-lg hover:scale-105 transition-transform hover-tilt"
+                    >
+                        Hubungi Kami Sekarang
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Gambar (Diperbarui) -->
+            <div class="md:w-1/2 mt-8 md:mt-0 animate-float">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-secondary rounded-xl transform group-hover:rotate-2 transition-all duration-300"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                        alt="Proses perbaikan sofa profesional"
+                        class="relative rounded-xl shadow-xl transform transition-all duration-300 group-hover:-translate-y-2 object-cover h-96 w-full"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="wave"></div> <!-- Animasi gelombang di bawah header -->
-    <section class="features">
-        <div class="feature">
-            <i class="fas fa-check-circle"></i>
-            <h3>Hasil Berkualitas Tinggi</h3>
-            <p>Kami mengutamakan kualitas dalam setiap detail pengerjaan kami. Mulai dari pemilihan bahan hingga proses produksi dikerjakan oleh ahlinya.</p>
-        </div>
-        <div class="feature">
-            <i class="fas fa-couch"></i>
-            <h3>Banyak Pilihan Kain & Kulit</h3>
-            <p>Kami menawarkan beragam pilihan bahan, termasuk kain dan kulit asli, semi kulit, serta berbagai material berkualitas lainnya.</p>
-        </div>
-        <div class="feature">
-            <i class="fas fa-handshake"></i>
-            <h3>Gratis Survey & Konsultasi</h3>
-            <p>Dapatkan Gratis Survey dan Konsultasi untuk merancang sofa impian Anda dengan para ahli kami di Padasuka Interior.</p>
-        </div>
-    </section>
-    <section class="gallery">
-        <h2>GALLERY HASIL PENGERJAAN SERVICE SOFA</h2>
-        <p>Berikut adalah beberapa hasil pengerjaan service sofa yang telah kami selesaikan.</p>
-        <div class="gallery-images">
-            <div class="gallery-image">
-                <img alt="A beautifully restored leather sofa." height="300" src="gb1.jpg" width="400"/>
-            </div>
-            <div class="gallery-image">
-                <img alt="A modern sofa with new upholstery." height="300" src="gb8.jpg" width="400"/>
-            </div>
-            <div class="gallery-image">
-                <img alt="A classic sofa with refurbished cushions." height="300" src="gb4.jpg" width="400"/>
-            </div>
-            <div class="gallery-image">
-                <img alt="A sectional sofa with new fabric." height="300" src="gb5.jpg" width="400"/>
-            </div>
-            <div class="gallery-image">
-                <img alt="A vintage sofa with restored leather." height="300" src="gb6.jpg" width="400"/>
-            </div>
-            <div class="gallery-image">
-                <img alt="A contemporary sofa with new padding." height="300" src="gb7.jpg" width="400"/>
-            </div>
-        </div>
-    </section>
-    <section class="services">
-        <h2>LAYANAN UNGGULAN</h2>
-        <p>Melayani Semua Kebutuhan Anda</p>
-        <p>Dengan pengalaman dari seorang ahli dalam layanan perbaikan dan pembuatan sofa baru, kami di Padasuka Interior siap memberikan pelayanan terbaik untuk memenuhi kebutuhan furnitur Anda.</p>
-        <div class="service-cards">
-            <div class="service-card">
-                <img alt="Service Sofa - A well-maintained sofa in a living room." height="300" src="https://storage.googleapis.com/a1aa/image/U_4Ld-mlhn-mfEpUigSYpZzU0m9FtK-8IlndL0RhaQg.jpg" width="400"/>
-                <h3>Service Sofa</h3>
-                <p>Melayani service & pembuatan sofa dengan berbagai bahan seperti kulit asli, semi kulit, dan lainnya.</p>
-            </div>
-            <div class="service-card">
-                <img alt="Custom Sofa - A custom-designed sofa in a modern living room." height="300" src="https://storage.googleapis.com/a1aa/image/stPdSmWHzMlzLTpOwcpObbs0w8WzKtTqeQSK-68GoJ0.jpg" width="400"/>
-                <h3>Custom Sofa</h3>
-                <p>Menyediakan layanan kustom desain sofa, spring bed, dan bantalan untuk mewujudkan kreasi sesuai dengan spesifikasi Anda.</p>
-            </div>
-            <div class="service-card">
-                <img alt="Layanan Luas - A spacious living room with a variety of furniture." height="300" src="https://storage.googleapis.com/a1aa/image/BNhlYkHXIhTNIQjr4nR5EYhfupclkPYosCwlwSpNseg.jpg" width="400"/>
-                <h3>Layanan Luas</h3>
-                <p>Layanan kami mencakup seluruh area Jabodetabek khususnya wilayah Pamulang, Ciputat, BSD, dan Bintaro. Dapatkan layanan gratis survey dan konsultasi.</p>
+
+    <!-- Features Section (Diperbarui) -->
+    <section class="py-16 bg-white" id="services">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12 animate-fade-in">
+                Mengapa Memilih Kami?
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all animate-fade-in-up border-2 border-primary/20 hover:border-secondary relative group">
+                    <div class="absolute inset-0 bg-primary/5 rounded-xl"></div>
+                    <div class="text-secondary text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Bergaransi Resmi</h3>
+                    <p class="text-gray-600">
+                        Garansi 1 tahun untuk semua jenis pengerjaan dengan bahan premium import
+                    </p>
+                    <div class="mt-4">
+                        <div class="h-1 bg-gradient-to-r from-primary to-secondary w-0 group-hover:w-full transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all animate-fade-in-up border-2 border-primary/20 hover:border-secondary relative group">
+                    <div class="absolute inset-0 bg-primary/5 rounded-xl"></div>
+                    <div class="text-secondary text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tenaga Ahli</h3>
+                    <p class="text-gray-600">
+                        Dikerjakan oleh tukang profesional berpengalaman 10+ tahun
+                    </p>
+                    <div class="mt-4">
+                        <div class="h-1 bg-gradient-to-r from-primary to-secondary w-0 group-hover:w-full transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all animate-fade-in-up border-2 border-primary/20 hover:border-secondary relative group">
+                    <div class="absolute inset-0 bg-primary/5 rounded-xl"></div>
+                    <div class="text-secondary text-4xl mb-4">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Harga Kompetitif</h3>
+                    <p class="text-gray-600">
+                        Free survey & nego harga sampai deal dengan jaminan termurah
+                    </p>
+                    <div class="mt-4">
+                        <div class="h-1 bg-gradient-to-r from-primary to-secondary w-0 group-hover:w-full transition-all duration-500"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section class="contact" id="contact">
-        <h2>HUBUNGI KAMI</h2>
-        <p>Untuk informasi lebih lanjut, hubungi kami melalui WhatsApp atau kunjungi lokasi kami di Google Maps.</p>
-        <a href="https://wa.me/+6287713686970" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            Hubungi Kami di WhatsApp
+
+    <!-- Tambahan Section: Testimoni -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">
+                Kata Pelanggan Kami
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimoni 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all animate-fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img 
+                            src="https://randomuser.me/api/portraits/men/1.jpg" 
+                            class="w-12 h-12 rounded-full border-2 border-secondary"
+                            alt="Testimoni 1"
+                        >
+                        <div class="ml-4">
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <p class="text-sm text-gray-500">Ciputat</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Hasil pengerjaan sangat rapi dan sesuai ekspektasi. Pelayanan ramah dan harga bersaing!"
+                    </p>
+                    <div class="mt-4 text-secondary">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimoni 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all animate-fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img 
+                            src="https://randomuser.me/api/portraits/women/2.jpg" 
+                            class="w-12 h-12 rounded-full border-2 border-secondary"
+                            alt="Testimoni 2"
+                        >
+                        <div class="ml-4">
+                            <h4 class="font-bold">Anita Rahma</h4>
+                            <p class="text-sm text-gray-500">Pondok Indah</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Sofa saya yang sudah 10 tahun seperti baru lagi. Proses cepat dan hasil memuaskan!"
+                    </p>
+                    <div class="mt-4 text-secondary">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all animate-fade-in-up">
+                    <div class="flex items-center mb-4">
+                        <img 
+                            src="https://randomuser.me/api/portraits/men/3.jpg" 
+                            class="w-12 h-12 rounded-full border-2 border-secondary"
+                            alt="Testimoni 3"
+                        >
+                        <div class="ml-4">
+                            <h4 class="font-bold">Dewanto</h4>
+                            <p class="text-sm text-gray-500">Bintaro</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Pelayanan 24 jam sangat membantu. Tukangnya profesional dan rapih bekerja."
+                    </p>
+                    <div class="mt-4 text-secondary">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tambahan Section: Proses Kerja -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12">
+                Proses Kerja Kami
+            </h2>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center p-4 animate-fade-in-up">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone-alt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">1. Hubungi Kami</h3>
+                    <p class="text-sm text-gray-600">Via WhatsApp atau Telepon</p>
+                </div>
+
+                <div class="text-center p-4 animate-fade-in-up">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-check text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">2. Jadwalkan Survey</h3>
+                    <p class="text-sm text-gray-600">Gratis & Tanpa Biaya</p>
+                </div>
+
+                <div class="text-center p-4 animate-fade-in-up">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tools text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">3. Proses Pengerjaan</h3>
+                    <p class="text-sm text-gray-600">Dikerjakan oleh Ahli</p>
+                </div>
+
+                <div class="text-center p-4 animate-fade-in-up">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-thumbs-up text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">4. Selesai & Garansi</h3>
+                    <p class="text-sm text-gray-600">Kepuasan Terjamin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+ <!-- Services Section -->
+ <section class="py-16 bg-primary/5" id="services">
+  <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center text-primary mb-12">
+          Layanan Kami
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+              <img 
+                  src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  alt="Ganti Kain Sofa"
+                  class="w-full h-48 object-cover"
+                  loading="lazy"
+              >
+              <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-2">Ganti Kain Sofa</h3>
+                  <p class="text-gray-600 mb-4">
+                      Tersedia berbagai jenis kain premium: Velvet, Canvas, Polyster, dll.
+                  </p>
+                  <ul class="list-disc list-inside text-secondary">
+                      <li>Regency Series</li>
+                      <li>Hikaron Fabric</li>
+                      <li>Latino Collection</li>
+                  </ul>
+              </div>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+              <img 
+                  src="https://images.unsplash.com/photo-1602872030490-4a484a7b3ba6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  alt="Ganti Kulit Sofa"
+                  class="w-full h-48 object-cover"
+                  loading="lazy"
+              >
+              <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-2">Ganti Kulit Sofa</h3>
+                  <p class="text-gray-600 mb-4">
+                      Kulit asli dengan berbagai varian warna dan tekstur
+                  </p>
+                  <ul class="list-disc list-inside text-secondary">
+                      <li>Genuine Leather</li>
+                      <li>Synthetic Leather</li>
+                      <li>Bonded Leather</li>
+                  </ul>
+              </div>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+              <img 
+                  src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  alt="Perbaikan Spring Bed"
+                  class="w-full h-48 object-cover"
+                  loading="lazy"
+              >
+              <div class="p-6">
+                  <h3 class="text-xl font-semibold mb-2">Perbaikan Spring Bed</h3>
+                  <p class="text-gray-600 mb-4">
+                      Perbaikan rangka, pegas, dan penambahan busa premium
+                  </p>
+                  <ul class="list-disc list-inside text-secondary">
+                      <li>Ganti Busa</li>
+                      <li>Perbaikan Pegas</li>
+                      <li>Ganti Rangka</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-16 bg-primary text-white">
+  <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Butuh Perbaikan Cepat?</h2>
+      <p class="mb-8 text-lg opacity-90">Kami siap datang ke lokasi Anda dalam 24 jam!</p>
+      <a 
+          href="https://wa.me/6287713686970" 
+          target="_blank"
+          class="inline-block bg-secondary text-primary font-semibold px-8 py-3 rounded-lg hover:scale-105 transition-transform"
+      >
+          <i class="fab fa-whatsapp mr-2"></i>Chat via WhatsApp
+      </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-12" id="contact">
+  <div class="container mx-auto">
+      <div class="grid md:grid-cols-3 gap-8">
+          <!-- Contact Info -->
+          <div>
+              <h3 class="text-xl font-semibold mb-4">Kontak Kami</h3>
+              <ul class="space-y-2">
+                  <li>
+                      <i class="fas fa-phone-alt mr-2 text-secondary"></i>
+                      <a href="tel:+6287713686970" class="hover:text-secondary transition-colors">
+                          0877-1368-6970
+                      </a>
+                  </li>
+                  <li>
+                      <i class="fas fa-map-marker-alt mr-2 text-secondary"></i>
+                      Jl. Legoso Raya No.43, Tangerang Selatan
+                  </li>
+                  <li>
+                      <i class="fas fa-clock mr-2 text-secondary"></i>
+                      Buka Setiap Hari 08:00 - 21:00 WIB
+                  </li>
+              </ul>
+          </div>
+
+          <!-- Social Media -->
+          <div>
+              <h3 class="text-xl font-semibold mb-4">Ikuti Kami</h3>
+              <div class="flex space-x-4">
+                  <a 
+                      href="#" 
+                      class="text-2xl hover:text-secondary transition-colors"
+                      aria-label="Facebook"
+                  >
+                      <i class="fab fa-facebook"></i>
+                  </a>
+                  <a 
+                      href="#" 
+                      class="text-2xl hover:text-secondary transition-colors"
+                      aria-label="Instagram"
+                  >
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a 
+                      href="#" 
+                      class="text-2xl hover:text-secondary transition-colors"
+                      aria-label="YouTube"
+                  >
+                      <i class="fab fa-youtube"></i>
+                  </a>
+              </div>
+          </div>
+
+          <!-- Google Maps -->
+          <div>
+              <h3 class="text-xl font-semibold mb-4">Lokasi Kami</h3>
+              <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.729097153705!2d106.71770531529478!3d-6.289518963450521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1a8b1e3b1a5%3A0x3039d80b220d3c0!2sJl.%20Legoso%20Raya%20No.43%2C%20RT.5%2FRW.1%2C%20Pisangan%2C%20Kec.%20Ciputat%20Tim.%2C%20Kota%20Tangerang%20Selatan%2C%20Banten%2015419!5e0!3m2!1sen!2sid!4v1623390281704!5m2!1sen!2sid" 
+                  class="w-full h-48 rounded-lg"
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy"
+                  aria-label="Peta Lokasi"
+              ></iframe>
+          </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; <span id="currentYear"></span> Lintang Production. All rights reserved.</p>
+      </div>
+  </div>
+</footer>
+    <!-- ... (Bagian Lain Tetap Sama) ... -->
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-8 right-8 z-50 animate-float">
+        <a 
+            href="https://wa.me/6287713686970" 
+            target="_blank"
+            class="bg-[#25D366] text-white p-4 rounded-full shadow-xl flex items-center hover:scale-110 transition-transform"
+        >
+            <i class="fab fa-whatsapp text-2xl"></i>
         </a>
-        <a class="instagram" href="https://www.instagram.com/homeservicesofa.tangsel" target="_blank">
-            <i class="fab fa-instagram"></i>
-            Ikuti Kami di Instagram
-        </a>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5719123659346!2d106.7525739!3d-6.319823599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ef0047b09cb3%3A0x7f5403df748e16ed!2sLintang%20Production%20Service%20Sofa!5e0!3m2!1sid!2sid!4v1737186101146!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    </section>
-    <footer class="footer-top">
-        <p>LINTANG PRODUCTION</p>
-        <p>Alamat: Jl. Legoso Raya, Pisangan, Kec. Ciputat Tim., Kota Tangerang Selatan, Banten 15419, Indonesia</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank">
-                <i class="fab fa-facebook-f"></i>
-            </a>    
-            <a href="https://www.instagram.com" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </footer>
-    <footer class="footer">
-        <p>© 2024 LINTANG PRODUCTION. All rights reserved.</p>
-    </footer>
+    </div>
+
+    <!-- Script Tambahan -->
+    <script>
+        // Animasi Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in-up');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('opacity-100');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Initial check
+         // Navbar Scroll Effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+    });
+
+    // Mobile Menu Toggle
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+        
+        // Update icon
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // Close Mobile Menu on Click Outside
+    document.addEventListener('click', function(e) {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuBtn = document.getElementById('menu-btn');
+        
+        if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            menuBtn.querySelector('i').classList.remove('fa-times');
+            menuBtn.querySelector('i').classList.add('fa-bars');
+        }
+    });
+    </script>
 </body>
 </html>
